@@ -10,6 +10,10 @@ import com.example.intentsejemplo2.utils.hideSoftKeyboard
 
 class DateSelectionActivity : AppCompatActivity() {
 
+    private var day: Int = 0
+    private var year: Int = 0
+    private var month: Int = 0
+
     // 5º Recibe el intent y extrae los datos que han sido enviados
     companion object {
 
@@ -46,7 +50,7 @@ class DateSelectionActivity : AppCompatActivity() {
         year = intent.getIntExtra(EXTRA_YEAR, 0)
     }
 
-    // 8ª
+    // 8ª Se le da a los textviews el valor recibido
     private fun setupViews() {
         binding.txtDay.setText(day.toString())
         binding.txtMonth.setText(month.toString())
@@ -64,9 +68,10 @@ class DateSelectionActivity : AppCompatActivity() {
         binding.txtDay.hideSoftKeyboard()
 
         // TODO IS VALID FORM
+        // (está en el repositorio intents ejemplo)
 
-            setActivityResult(day.toInt(), month.toInt(), year.toInt())
-            finish()
+        setActivityResult(day.toInt(), month.toInt(), year.toInt())
+        finish()
     }
 
     // 10º
@@ -77,9 +82,7 @@ class DateSelectionActivity : AppCompatActivity() {
     }
 
 
-    private var day: Int = 0
-    private var year: Int = 0
-    private var month: Int = 0
+
 
 
 

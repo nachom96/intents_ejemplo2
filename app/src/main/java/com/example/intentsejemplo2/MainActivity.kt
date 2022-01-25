@@ -39,9 +39,7 @@ class MainActivity : AppCompatActivity() {
         year = calendar.get(Calendar.YEAR)
     }
 
-    // 3º
-    // TODO Preguntar por R.string.main_date
-    @SuppressLint("StringFormatInvalid")
+    // 3º El recurso de cadena main_date es un valor con placeholders
     private fun showDate() {
         binding.lblDate.text = getString(R.string.main_date, day, month, year)
     }
