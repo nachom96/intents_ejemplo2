@@ -1,0 +1,9 @@
+1- Añadir dependencias a app/build gradle
+
+dependencies {
+    implementation 'androidx.activity:activity-ktx:X.X.X'
+    implementation 'androidx.fragment:fragment-ktx:X.X.X'
+    -- Si no valen añadir la siguiente versión:
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0'
+}

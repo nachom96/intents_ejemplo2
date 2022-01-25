@@ -2,13 +2,17 @@ package com.example.intentsejemplo2
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.intentsejemplo2.databinding.MainActivityBinding
 import java.util.*
 
 // 1º Valor único para enviar y recibir datos
+// Ver apuntes txt para la importación de dependencias
 private const val RC_DATE_SELECTION: Int = 1
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +21,16 @@ class MainActivity : AppCompatActivity() {
     private var day: Int = 0
     private var month: Int = 0
     private var year: Int = 0
+
+    // 11º Callback para llamar a otra actividad esperando respuesta
+    // Si hay más llamadas, hay que crear distintos dateSelectionCall y llamarlos con el launch correspondiente (paso 4)
+    private val dateSelectionCall =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+                extractResult(result.data!!)
+                showDate()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,19 +62,11 @@ class MainActivity : AppCompatActivity() {
     // Para crear una nueva actividad: CLick derecho al paquete -> new -> activity -> EmptyActivity
     private fun navigateToDateSelectionActivity() {
         val intent = DateSelectionActivity.newIntent(this, day, month, year)
-        startActivityForResult(intent, RC_DATE_SELECTION)
+        //12º
+        dateSelectionCall.launch(intent)
     }
 
-    // 11º
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-        if (resultCode == RESULT_OK && requestCode == RC_DATE_SELECTION && intent != null) {
-            extractResult(intent)
-            showDate()
-        }
-    }
-
-    // 12º
+    // 13º Extrae la información recibida y la procesa
     private fun extractResult(intent: Intent) {
 
         if (!intent.hasExtra(DateSelectionActivity.EXTRA_DAY) ||

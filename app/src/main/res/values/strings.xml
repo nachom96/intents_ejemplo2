@@ -1,6 +1,4 @@
-
 <resources>
     <string name="app_name">Intents ejemplo 2</string>
     <string name="main_date">%02d/%02d/%04d"</string>
-
 </resources>

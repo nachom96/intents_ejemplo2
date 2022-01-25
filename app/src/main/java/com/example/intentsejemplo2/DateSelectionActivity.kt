@@ -69,7 +69,6 @@ class DateSelectionActivity : AppCompatActivity() {
 
         // TODO IS VALID FORM
         // (está en el repositorio intents ejemplo)
-
         setActivityResult(day.toInt(), month.toInt(), year.toInt())
         finish()
     }
