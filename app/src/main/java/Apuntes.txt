@@ -7,3 +7,10 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.4.0'
     implementation 'androidx.fragment:fragment-ktx:1.4.0'
 }
+
+2- Crear Layout o Idioma
+     - 1º Carpeta res-> Android resource file -> Resource type: Layout -> File name: El mismo
+     que el layout original -> Orientation: LandScape, Ok.
+     - 2º Se copia el layout original (por ejemplo: activity_main) y se pega tal cual en el nuevo
+     - 3º Se modifican las posiciones del layout para que se vean como queramos
+     - 4º LOS ID'S Y EL TIPO DE VISTA DEBEN SER IGUALES
